@@ -15,10 +15,13 @@ public class EnemyController : MonoBehaviour
     UnityEngine.AI.NavMeshAgent agent;
     private float timeBetweenHit = 1f;
     private float startTime;
+    private Animator animator;
+    private bool first = true;
 
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
         NavMeshHit hit;
         NavMesh.SamplePosition(transform.position, out hit, 1.0f, 1);
@@ -45,6 +48,8 @@ public class EnemyController : MonoBehaviour
     {
         if (Time.fixedTime > startTime + timeBetweenHit && other.gameObject.name == "Castle")
         {
+            if (first)
+                animator.SetBool("IsAttacking", true);
             onHitCastle();
             startTime = Time.fixedTime;
         }
