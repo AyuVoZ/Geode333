@@ -5,15 +5,16 @@ using UnityEngine;
 public class GetWoodStone : MonoBehaviour
 {
     public GameObject RessourceManager;
-    public GameObject Player;
     AudioSource audio;
     public float distance;
     public bool wood;
     public bool stone;
+    private GameObject[] player;
     // Start is called before the first frame update
     void Start()
     {
         audio = GetComponent<AudioSource>();
+        player = GameObject.FindGameObjectsWithTag("Player");
     }
 
     // Update is called once per frame
@@ -21,8 +22,8 @@ public class GetWoodStone : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
             {
-                print(Vector3.Distance(transform.position, Player.transform.position));
-                if (Vector3.Distance(transform.position, Player.transform.position) < distance)
+                print(Vector3.Distance(transform.position, player[0].transform.position));
+                if (Vector3.Distance(transform.position, player[0].transform.position) < distance)
                     {
                         print("Harvest");
                         if(wood){

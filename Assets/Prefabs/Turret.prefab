@@ -120,8 +120,10 @@ MonoBehaviour:
   range: 15
   turnSpeed: 10
   fireRate: 1
-  bulletPf: {fileID: 0}
-  firePoint: {fileID: 0}
+  bulletPf: {fileID: 1089694482434693470, guid: e3d3a06d73228104dae55b103277d920, type: 3}
+  firePoint: {fileID: 8037447697408579108}
+  tip: {fileID: 0}
+  upgradeRange: 3
 --- !u!1 &1643196996552082522
 GameObject:
   m_ObjectHideFlags: 0

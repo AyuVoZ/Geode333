@@ -6,11 +6,13 @@ public class RessourceManager : MonoBehaviour
 {
     public int wood;
     public int stone;
+    public int gold;
     // Start is called before the first frame update
     void Start()
     {
         wood = 0;
         stone = 0;
+        gold = 0;
     }
 
     // Update is called once per frame
@@ -35,6 +37,11 @@ public class RessourceManager : MonoBehaviour
     public void PayStone(int pay){
         if(pay<=stone){
             stone-=pay;
+        }
+    }
+    public void PayGold(int pay){
+        if(pay<=gold){
+            gold-=pay;
         }
     }
 }
