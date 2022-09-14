@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    private Transform target;
+    private Transform target = null;
     public float range = 15f;
+
+    public float turnSpeed = 10f;
+    public float fireRate = 1f;
+
+    private float fireCountdown = 0f;
+
+    public GameObject bulletPf;
+    public Transform firePoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +30,13 @@ public class Turret : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         Vector3 rotation = lookRotation.eulerAngles;
         transform.rotation = Quaternion.Euler(0f,rotation.y,0f);
+
+        if (fireCountdown <= 0f){
+            Shoot();
+            fireCountdown = 1f / fireRate;
+        }
+
+        fireCountdown -= Time.deltaTime;
     }
 
     void UpdateTarget() {
@@ -41,7 +56,18 @@ public class Turret : MonoBehaviour
 
         if(nearest != null && shortestDistance <= range) {
             target = nearest.transform;
+        } else
+        {
+            target = null;
         }
+    }
+
+    void Shoot(){
+        GameObject bulletGO = (GameObject)Instantiate(bulletPf, firePoint.position, firePoint.rotation);
+        Bullet bullet = bulletGO.GetComponent<Bullet>();
+
+        if(bullet != null)
+            bullet.setTarget(target);
     }
 
     void OnDrawGizmos() {
