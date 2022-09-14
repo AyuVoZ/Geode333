@@ -12,7 +12,6 @@ public class GetWoodStone : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        distance = 3.0f;
     }
 
     // Update is called once per frame
