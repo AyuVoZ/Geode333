@@ -12,12 +12,13 @@ public class EnemyManager : MonoBehaviour
     private int timeBetweenWaves = 5;
     private float startTime;
     private int enemySpawned = 0;
+    private int enemyIndex = 0;
 
     [System.Serializable]
     public class Wave
     {
-        public GameObject EnemyPrefab;
-        public int count;
+        public GameObject[] EnemyPrefabs;
+        public int[] count;
         public float rate;
     }
 
@@ -38,7 +39,8 @@ public class EnemyManager : MonoBehaviour
             if (Time.fixedTime >= timeBetweenWaves + startTime)
             {
                 enemySpawned = 1;
-                SpawnEnemy(Waves[index_wave].EnemyPrefab);
+                enemyIndex = 0;
+                SpawnEnemy(Waves[index_wave].EnemyPrefabs[0]);
                 isWaiting = false;
                 isSpawning = true;
                 startTime = Time.fixedTime;
@@ -46,25 +48,25 @@ public class EnemyManager : MonoBehaviour
         }
         else if(isSpawning)
         {
-            if(enemySpawned == Waves[index_wave].count)
+            if(enemyIndex == Waves[index_wave].count.Length)
             {
                 isSpawning = false;
                 isWaiting = true;
                 startTime = Time.fixedTime;
                 index_wave++;
             }
+            else if(enemySpawned == Waves[index_wave].count[enemyIndex])
+            {
+                enemyIndex++;
+                enemySpawned = 0;
+            }
             else if (Time.fixedTime >= startTime + Waves[index_wave].rate)
             {
-                SpawnEnemy(Waves[index_wave].EnemyPrefab);
+                SpawnEnemy(Waves[index_wave].EnemyPrefabs[enemyIndex]);
                 enemySpawned++;
                 startTime = Time.fixedTime;
             }
         }
-    }
-
-    void SpawnWave()
-    {
-        SpawnEnemy(Waves[index_wave].EnemyPrefab);
     }
 
     void SpawnEnemy(GameObject EnemyPrefab)
