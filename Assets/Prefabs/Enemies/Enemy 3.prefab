@@ -711,7 +711,7 @@ GameObject:
   - component: {fileID: -7979708447835680044}
   m_Layer: 0
   m_Name: Enemy 3
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -789,6 +789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collide: {fileID: 0}
   Speed: 0
+  health: 2
 --- !u!95 &-7979708447835680044
 Animator:
   serializedVersion: 4
