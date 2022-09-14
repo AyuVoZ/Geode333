@@ -13,7 +13,7 @@ public class EnemyController : MonoBehaviour
     GameObject[] waypoints;
     private int index;
     UnityEngine.AI.NavMeshAgent agent;
-    private float timeBetweenHit;
+    private float timeBetweenHit = 1f;
     private float startTime;
 
     // Start is called before the first frame update
@@ -41,9 +41,9 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (Time.fixedTime > startTime + timeBetweenHit)
+        if (Time.fixedTime > startTime + timeBetweenHit && other.gameObject.name == "Castle")
         {
             onHitCastle();
             startTime = Time.fixedTime;
