@@ -27,7 +27,7 @@ public class TurretStand : MonoBehaviour
         if(distance < range){
             if (Input.GetKeyDown("space"))
             {
-                if ((RessourceManager.GetComponent<RessourceManager>().wood > 10) && (RessourceManager.GetComponent<RessourceManager>().stone > 10))
+                if ((RessourceManager.GetComponent<RessourceManager>().wood >= 10) && (RessourceManager.GetComponent<RessourceManager>().stone >= 10))
                 {
                     BuildTurret();
                     RessourceManager.GetComponent<RessourceManager>().PayStone(10);
@@ -43,6 +43,7 @@ public class TurretStand : MonoBehaviour
 
     void BuildTurret(){
         Instantiate(turret,spawn.position, spawn.rotation);
+        tip.SetActive(false);
         Destroy(gameObject);
     }
 }
