@@ -14,15 +14,27 @@ public class Turret : MonoBehaviour
 
     public GameObject bulletPf;
     public Transform firePoint;
+
+    private int price = 10;
+
+    private GameObject[] player;
+
+    private GameObject[] RessourceManager;
+    public GameObject tip;
+    public float upgradeRange = 3f;
+
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);   
+        player = GameObject.FindGameObjectsWithTag("Player");
+        RessourceManager = GameObject.FindGameObjectsWithTag("RessourceManager");
     }
 
     // Update is called once per frame
     void Update()
     {
+        Upgrade();
         if(target == null) {
             return;
         }
@@ -73,5 +85,32 @@ public class Turret : MonoBehaviour
     void OnDrawGizmos() {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
+    }
+
+    void Upgrade(){
+        float distance = Vector3.Distance(player[0].transform.position,transform.position);
+        //Debug.Log(distance);
+        //Debug.Log("SQUID");
+        if(distance < upgradeRange){
+            //tip.SetActive(true);
+            Debug.Log("SQUIDGAME");
+            if (Input.GetKeyDown("space"))
+            {
+                Debug.Log("GAME");
+                if ((RessourceManager[0].GetComponent<RessourceManager>().wood >= price) && (RessourceManager[0].GetComponent<RessourceManager>().stone >= price) && (RessourceManager[0].GetComponent<RessourceManager>().gold >= price))
+                {
+                    fireRate +=1f;
+                    //tip.SetActive(false);
+                    RessourceManager[0].GetComponent<RessourceManager>().PayStone(price);
+                    RessourceManager[0].GetComponent<RessourceManager>().PayWood(price);
+                    RessourceManager[0].GetComponent<RessourceManager>().PayGold(price);
+                    price+=5;
+                }
+            }
+            
+        } else {
+            //tip.SetActive(false);
+        }
+
     }
 }
