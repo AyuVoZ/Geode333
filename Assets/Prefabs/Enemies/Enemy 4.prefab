@@ -1338,6 +1338,7 @@ MonoBehaviour:
   collide: {fileID: 0}
   Speed: 0
   health: 2
+  RessourceManager: {fileID: 7289888848142433489, guid: 2d38423a4ec572944824f470f4b705ef, type: 3}
 --- !u!95 &6135808603245751537
 Animator:
   serializedVersion: 4

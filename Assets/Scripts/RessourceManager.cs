@@ -29,6 +29,12 @@ public class RessourceManager : MonoBehaviour
         stone++;
     }
 
+    public void AddGold()
+    {
+        Debug.Log("GOLD");
+        gold++;
+    }
+
     public void PayWood(int pay){
         if(pay<=wood){
             wood-=pay;

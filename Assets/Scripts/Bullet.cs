@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
 
     private Transform target;
 
-    public float speed = 70f;
+    public float speed = 100f;
     public GameObject particle;
 
     public void setTarget(Transform _target){

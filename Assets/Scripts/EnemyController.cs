@@ -19,6 +19,8 @@ public class EnemyController : MonoBehaviour
     private float startTime;
     private Animator animator;
     private bool first = true;
+    private GameObject[] RessourceManager;
+    private bool isDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -31,17 +33,24 @@ public class EnemyController : MonoBehaviour
         agent.Warp(hit.position);
         agent.SetDestination(waypoints[0].transform.position);
         index = 1;
+        RessourceManager = GameObject.FindGameObjectsWithTag("RessourceManager");
     }
     void FixedUpdate()
     {
-        if (health <= 0)
+        if (isDead)
+        {
+            return;
+        }
+        if (health <= 0 && !isDead)
         {
             animator.SetBool("IsDead", true);
             agent.SetDestination(transform.position);
             gameObject.tag = "Untagged";
+            RessourceManager[0].GetComponent<RessourceManager>().AddGold();
             Invoke("DestroyBody", 3);
+            isDead = true;
         }
-        if (index < waypoints.Length)
+        else if (index < waypoints.Length)
         {
             if (agent.hasPath || agent.pathPending)
                 return;

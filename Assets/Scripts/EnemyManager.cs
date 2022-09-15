@@ -9,7 +9,7 @@ public class EnemyManager : MonoBehaviour
     private int index_wave;
     private bool isSpawning = false;
     private bool isWaiting = false;
-    private int timeBetweenWaves = 5;
+    private int timeBetweenWaves = 8;
     private float startTime;
     private int enemySpawned = 0;
     private int enemyIndex = 0;
@@ -25,7 +25,8 @@ public class EnemyManager : MonoBehaviour
     private void Awake()
     {
         index_wave = 0;
-        isSpawning = true;
+        isWaiting = true;
+        startTime = Time.fixedTime;
     }
 
     private void Update()

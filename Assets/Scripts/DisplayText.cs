@@ -5,17 +5,14 @@ using UnityEngine.UI;
 
 public class DisplayText : MonoBehaviour
 {
-   public Text text;
-   public bool stone;
+   public Text woodText;
+   public Text stoneText;
+   public Text goldText;
  
    public void Update()
    {
-    if(stone){
-        text.text = this.GetComponent<RessourceManager>().stone.ToString();
-    }
-    else
-    {
-        text.text = this.GetComponent<RessourceManager>().wood.ToString();
-    }
+        stoneText.text = this.GetComponent<RessourceManager>().stone.ToString();
+        woodText.text = this.GetComponent<RessourceManager>().wood.ToString();
+        goldText.text = this.GetComponent<RessourceManager>().gold.ToString();
    }
 }
