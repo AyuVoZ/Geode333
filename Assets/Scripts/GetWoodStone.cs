@@ -10,6 +10,8 @@ public class GetWoodStone : MonoBehaviour
     public bool wood;
     public bool stone;
     private GameObject[] player;
+    public GameObject floatingText;
+    private GameObject text = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,22 +22,30 @@ public class GetWoodStone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("space"))
-            {
-                print(Vector3.Distance(transform.position, player[0].transform.position));
-                if (Vector3.Distance(transform.position, player[0].transform.position) < distance)
-                    {
-                        print("Harvest");
-                        if(wood){
-                            RessourceManager.GetComponent<RessourceManager>().AddWood();
-                            audio.Play();
-                        }
-                        
-                        if(stone){
-                            RessourceManager.GetComponent<RessourceManager>().AddStone();
-                            audio.Play();
-                        }
-                    }
+        if (Vector3.Distance(transform.position, player[0].transform.position) < distance)
+        {
+            if(text==null){
+                Quaternion rot = Quaternion.Euler(70, 0, 0);
+                Vector3 pos = transform.position + new Vector3(0f, 3f, 0f);
+                text = Instantiate(floatingText, pos, rot);
+                text.GetComponent<TextMesh>().text = "Press SPACE to get " + (wood ? "wood":"stone");
             }
+            
+            if (Input.GetKeyDown("space"))
+                {
+                    if(wood){
+                        RessourceManager.GetComponent<RessourceManager>().AddWood();
+                        audio.Play();
+                    }
+                    
+                    if(stone){
+                        RessourceManager.GetComponent<RessourceManager>().AddStone();
+                        audio.Play();
+                    }
+                }
+        } else {
+            if(text)
+                Destroy(text);
+        }
     }
 }

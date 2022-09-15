@@ -51,10 +51,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RessourceManager: {fileID: 0}
-  Player: {fileID: 0}
   distance: 4
   wood: 0
   stone: 1
+  floatingText: {fileID: 509738882530508261, guid: 834ccf6fc754c1c48a236b324c4daab3, type: 3}
 --- !u!82 &5723033413600203587
 AudioSource:
   m_ObjectHideFlags: 0

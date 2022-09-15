@@ -23,7 +23,10 @@ public class Turret : MonoBehaviour
     public GameObject tip;
     public float upgradeRange = 3f;
 
-    // Start is called before the first frame update
+    public GameObject floatingText;
+
+    private GameObject text = null;
+    
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);   
@@ -31,7 +34,6 @@ public class Turret : MonoBehaviour
         RessourceManager = GameObject.FindGameObjectsWithTag("RessourceManager");
     }
 
-    // Update is called once per frame
     void Update()
     {
         Upgrade();
@@ -89,18 +91,23 @@ public class Turret : MonoBehaviour
 
     void Upgrade(){
         float distance = Vector3.Distance(player[0].transform.position,transform.position);
-        //Debug.Log(distance);
-        //Debug.Log("SQUID");
+
         if(distance < upgradeRange){
-            //tip.SetActive(true);
-            Debug.Log("SQUIDGAME");
+
+            if(text==null){
+                Quaternion rot = Quaternion.Euler(70, 0, 0);
+                Vector3 pos = transform.position + new Vector3(0f, 3f, 0f);
+                text = Instantiate(floatingText, pos, rot);
+                text.GetComponent<TextMesh>().text = "Price : " + price.ToString();
+            }
+
             if (Input.GetKeyDown("space"))
             {
-                Debug.Log("GAME");
                 if ((RessourceManager[0].GetComponent<RessourceManager>().wood >= price) && (RessourceManager[0].GetComponent<RessourceManager>().stone >= price) && (RessourceManager[0].GetComponent<RessourceManager>().gold >= price))
                 {
+                    if(text)
+                        Destroy(text);
                     fireRate +=1f;
-                    //tip.SetActive(false);
                     RessourceManager[0].GetComponent<RessourceManager>().PayStone(price);
                     RessourceManager[0].GetComponent<RessourceManager>().PayWood(price);
                     RessourceManager[0].GetComponent<RessourceManager>().PayGold(price);
@@ -109,7 +116,8 @@ public class Turret : MonoBehaviour
             }
             
         } else {
-            //tip.SetActive(false);
+            if(text)
+                Destroy(text);
         }
 
     }

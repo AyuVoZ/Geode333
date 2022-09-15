@@ -124,6 +124,7 @@ MonoBehaviour:
   firePoint: {fileID: 8037447697408579108}
   tip: {fileID: 1643196996552082522}
   upgradeRange: 3
+  floatingText: {fileID: 8401428608741606555, guid: 67050804059e4be489b6f0b2483de47b, type: 3}
 --- !u!1 &1643196996552082522
 GameObject:
   m_ObjectHideFlags: 0

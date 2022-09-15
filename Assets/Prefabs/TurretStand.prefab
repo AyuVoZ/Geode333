@@ -112,12 +112,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turret: {fileID: 380839401614762284, guid: d5d50d80ce9c6fb428216219bcc36c20, type: 3}
-  player: {fileID: 0}
   range: 3
   spawn: {fileID: 4090278414299009469}
-  price: 0a0000000a00000000000000
-  RessourceManager: {fileID: 0}
-  tip: {fileID: 0}
+  ressourceManager: {fileID: 0}
+  floatingText: {fileID: 509738882530508261, guid: 834ccf6fc754c1c48a236b324c4daab3, type: 3}
 --- !u!1 &4090278414299009468
 GameObject:
   m_ObjectHideFlags: 0
