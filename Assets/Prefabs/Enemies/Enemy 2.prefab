@@ -1097,7 +1097,6 @@ MonoBehaviour:
   collide: {fileID: 0}
   Speed: 0
   health: 2
-  RessourceManager: {fileID: 7289888848142433489, guid: 2d38423a4ec572944824f470f4b705ef, type: 3}
 --- !u!195 &7001814721488195263
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1131,9 +1130,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1
+  m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!95 &-8980782374155620409
 Animator:
   serializedVersion: 4
