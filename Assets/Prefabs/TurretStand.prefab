@@ -114,7 +114,7 @@ MonoBehaviour:
   turret: {fileID: 380839401614762284, guid: d5d50d80ce9c6fb428216219bcc36c20, type: 3}
   range: 3
   spawn: {fileID: 4090278414299009469}
-  ressourceManager: {fileID: 0}
+  ressourceManager: {fileID: 7289888848142433489, guid: 2d38423a4ec572944824f470f4b705ef, type: 3}
   floatingText: {fileID: 509738882530508261, guid: 834ccf6fc754c1c48a236b324c4daab3, type: 3}
 --- !u!1 &4090278414299009468
 GameObject:

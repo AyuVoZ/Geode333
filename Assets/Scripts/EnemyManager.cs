@@ -6,6 +6,7 @@ public class EnemyManager : MonoBehaviour
 {
     public Transform spawnPoint;
     public Wave[] Waves;
+    public bool finishedSpawning;
     private int index_wave;
     private bool isSpawning = false;
     private bool isWaiting = false;
@@ -33,6 +34,7 @@ public class EnemyManager : MonoBehaviour
     {
         if (index_wave == Waves.Length)
         {
+            finishedSpawning = true;
             return;
         }
         if(isWaiting)
