@@ -14,6 +14,7 @@ public class EnemyManager : MonoBehaviour
     private float startTime;
     private int enemySpawned = 0;
     private int enemyIndex = 0;
+    private bool firstWave = true;
 
     [System.Serializable]
     public class Wave
@@ -26,12 +27,15 @@ public class EnemyManager : MonoBehaviour
     private void Awake()
     {
         index_wave = 0;
-        isWaiting = true;
         startTime = Time.fixedTime;
     }
 
     private void Update()
     {
+        if(firstWave && Time.fixedTime >= 15 + startTime)
+        {
+            isSpawning = true;
+        }
         if (index_wave == Waves.Length)
         {
             finishedSpawning = true;
