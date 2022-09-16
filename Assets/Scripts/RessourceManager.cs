@@ -23,10 +23,9 @@ public class RessourceManager : MonoBehaviour
         stone++;
     }
 
-    public void AddGold()
+    public void AddGold(int add)
     {
-        Debug.Log("GOLD");
-        gold++;
+        gold += add;
     }
 
     public void PayWood(int pay){

@@ -11,6 +11,7 @@ public class EnemyController : MonoBehaviour
     public Collider collide;
     public float Speed;
     public int health;
+    public int gold;
 
     GameObject[] waypoints;
     private int index;
@@ -46,7 +47,7 @@ public class EnemyController : MonoBehaviour
             animator.SetBool("IsDead", true);
             agent.SetDestination(transform.position);
             gameObject.tag = "Untagged";
-            RessourceManager[0].GetComponent<RessourceManager>().AddGold();
+            RessourceManager[0].GetComponent<RessourceManager>().AddGold(gold);
             Invoke("DestroyBody", 3);
             isDead = true;
         }
