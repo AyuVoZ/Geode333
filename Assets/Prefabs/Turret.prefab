@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23ccac22abea318488ff0eb82b19a6a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 15
+  range: 10
   turnSpeed: 10
   fireRate: 1
   bulletPf: {fileID: 1089694482434693470, guid: e3d3a06d73228104dae55b103277d920, type: 3}
